@@ -23,7 +23,11 @@ hostnamectl set-hostname "$NEW_HOSTNAME"
 echo "$NEW_HOSTNAME" > /etc/hostname
 
 # 修改 /etc/hosts 文件
-sed -i "s/127.0.1.1.*/127.0.1.1   $NEW_HOSTNAME/" /etc/hosts
+if grep -q "127.0.1.1" /etc/hosts; then
+    sed -i "s/127.0.1.1.*/127.0.1.1   $NEW_HOSTNAME/" /etc/hosts
+else
+    echo "127.0.1.1   $NEW_HOSTNAME" >> /etc/hosts
+fi
 
 # 确认修改
 echo "主机名已修改为 $NEW_HOSTNAME。"
