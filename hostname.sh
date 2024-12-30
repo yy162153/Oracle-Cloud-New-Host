@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 新主机名
-NEW_HOSTNAME="your-new-hostname"
+NEW_HOSTNAME="us-sanjose-arm1"
 
 # 修改当前会话的主机名
 hostnamectl set-hostname $NEW_HOSTNAME
