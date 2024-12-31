@@ -37,8 +37,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sb.
    - 设置 Netflix 和 OpenAI 分流
 2. 安装哪吒监控面板
    - 无 VPS 搭建哪吒探针：使用 Paas、Cloudflare 与 GitHub 的创新方案
-     - [教程视频](https://www.youtube.com/watch?v=YaQFfMckXFQ)
-     - [GitHub 项目](https://github.com/fscarmen2/Argo-Nezha-Service-Container)
+     - [教程视频](https://www.youtube.com/watch?v=YaQFfMckXFQ) 作者: 科技Land
+     - [GitHub 项目](https://github.com/fscarmen2/Argo-Nezha-Service-Container) 作者: fscarmen2
 3. 删除哪吒监控面板
 ```bash
 systemctl disable --now nezha-agent
