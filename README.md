@@ -39,10 +39,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sb.
    - 无 VPS 搭建哪吒探针：使用 Paas、Cloudflare 与 GitHub 的创新方案
      - [教程视频](https://www.youtube.com/watch?v=YaQFfMckXFQ) 作者: 科技Land
      - [GitHub 项目](https://github.com/fscarmen2/Argo-Nezha-Service-Container) 作者: fscarmen2
-3. 删除哪吒监控面板
+3. 卸载哪吒监控面板（宿主机内）
 ```bash
 systemctl disable --now nezha-agent
-```
-```bash
-rm -rf /opt/nezha/agent
+m -rf /opt/nezha/agent
 ```
