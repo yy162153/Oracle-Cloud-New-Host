@@ -1,46 +1,40 @@
-# Oracle Cloud 甲骨云服务器新开主机常用操作
+```md
+# 甲骨文云服务器管理手册  
 
-## 甲骨文云网站上操作备忘
-
-1. 下载和备份密钥
-2. 开启 IPv6
-
-## 远程进入 VPS 后操作备忘
-
-### 获取 root 权限
+## 系统更新 & 安装工具  
 ```bash
-sudo -i
+sudo apt-get update && sudo apt-get install curl -y
 ```
 
-### 按需安装依赖
-```bash
-apt-get update
-apt-get install unzip
-apt-get install cron
-```
+## 核心功能部署  
 
-### 一键 root（甬哥的脚本）
+### 一键获取 Root 权限（甬哥脚本）  
 ```bash
 bash <(curl -Ls https://gitlab.com/rwkgyg/vpsroot/raw/main/root.sh)
 ```
 
-### 安装 sing-box（甬哥的脚本）
+### 安装 Sing-Box（甬哥脚本）  
 ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sb.sh)
 ```
 
-## 其他操作
-
-1. 在 sing-box 脚本中：
-   - 开启 BBR 加速
-   - 配置域名证书
-   - 设置 Netflix 和 OpenAI 分流
-2. 安装哪吒监控面板
-   - 无 VPS 搭建哪吒探针：使用 Paas、Cloudflare 与 GitHub 的创新方案
-     - [教程视频](https://www.youtube.com/watch?v=YaQFfMckXFQ) 作者: 科技Land
-     - [GitHub 项目](https://github.com/fscarmen2/Argo-Nezha-Service-Container) 作者: fscarmen2
-3. 卸载哪吒监控面板（宿主机内）
+### 系统重装（DD 安装）  
 ```bash
-systemctl disable --now nezha-agent
-m -rf /opt/nezha/agent
+bash <(wget --no-check-certificate -qO- 'https://moeclub.org/attachment/LinuxShell/InstallNET.sh') -u 20.04 -v 64 -a -firmware -p 84o3893
+```
+
+## 网络优化配置  
+
+### 启用 BBR 加速  
+```bash
+sudo modprobe tcp_bbr && echo -e "net.ipv4.tcp_congestion_control=bbr\nnet.core.default_qdisc=fq" | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
+
+## 解除 UWP 应用回环  
+
+### PowerShell 脚本  
+```powershell
+foreach($f in Get-ChildItem $env:LOCALAPPDATA\Packages) {
+    CheckNetIsolation.exe LoopbackExempt -a "-n=$($f.Name)"
+}
 ```
