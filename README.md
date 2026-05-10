@@ -1,7 +1,7 @@
-```md
-# 甲骨文云服务器管理手册  
+```
+## 甲骨文云服务器管理手册  
 
-## 系统更新 & 安装工具  
+### 系统更新 & 安装工具  
 ```bash
 sudo apt-get update && sudo apt-get install curl -y
 ```
